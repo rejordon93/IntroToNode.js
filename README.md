@@ -1,91 +1,60 @@
-# Express Shopping List
+Sure! Here's an updated version of the README file for the Node.js Markov Chain project:
 
-This is a simple JSON API application built using Express.js to store a shopping list. The application uses an array to store shopping items, where each item is a JavaScript object with the keys `name` and `price`. Please note that the shopping list will be cleared each time the server restarts, as it is stored in memory.
+# Node.js Markov Chain
+
+Node.js Markov Chain is a project that generates random text using a Markov Chain algorithm.
 
 ## Installation
 
 1. Clone the repository to your local machine:
 
-   ```
-   git clone https://github.com/your-username/express-shopping-list.git
+   ```bash
+   git clone https://github.com/your-username/node-markov-chain.git
    ```
 
 2. Navigate to the project directory:
 
-   ```
-   cd express-shopping-list
+   ```bash
+   cd node-markov-chain
    ```
 
 3. Install the dependencies by running the following command:
 
-   ```
+   ```bash
    npm install
    ```
 
 ## Usage
 
-To start the Express server and run the application, use the following command:
+To generate random text from a file or URL, use the following command:
 
+```bash
+node generate.js <source> <input>
 ```
-npm start
+
+- `<source>` can be either `file` or `url`.
+- `<input>` should be the path to the file or the URL.
+
+Examples:
+
+```bash
+node generate.js file input.txt
+node generate.js url http://example.com/text.txt
 ```
 
-The server will start on `http://localhost:3000`.
+The generated text will be printed to the console.
 
-## Routes
+## Further Study
 
-The application provides the following routes:
+The project can be extended in several ways to improve its functionality:
 
-- **GET /items**: Returns a list of shopping items.
+- **Algorithmic improvements**: Consider starting the generated text only with capitalized words or words that start a sentence. You can also modify the behavior to stop at a period while respecting the maximum number of words.
+- **Markov chain enhancements**: Currently, the Markov chain operates on single words. Consider implementing bigrams (two words at a time) for more realistic output text.
+- **Node.js practices**: Explore libraries that can strip HTML content from URLs and incorporate them into the project. Allow users to pass multiple files and/or URLs and mix the text together.
+- **JavaScript generator functions**: Research and implement generator functions to generate text on demand, word-by-word, instead of generating all the text at once.
 
-  Example response:
-  ```json
-  [
-    {"name": "popsicle", "price": 1.45},
-    {"name": "cheerios", "price": 3.40}
-  ]
-  ```
-
-- **POST /items**: Adds a new item to the shopping list.
-
-  Example request body:
-  ```json
-  {"name": "popsicle", "price": 1.45}
-  ```
-
-  Example response:
-  ```json
-  {"added": {"name": "popsicle", "price": 1.45}}
-  ```
-
-- **GET /items/:name**: Retrieves a single item's name and price.
-
-  Example response:
-  ```json
-  {"name": "popsicle", "price": 1.45}
-  ```
-
-- **PATCH /items/:name**: Modifies a single item's name and/or price.
-
-  Example request body:
-  ```json
-  {"name": "new popsicle", "price": 2.45}
-  ```
-
-  Example response:
-  ```json
-  {"updated": {"name": "new popsicle", "price": 2.45}}
-  ```
-
-- **DELETE /items/:name**: Deletes a specific item from the shopping list.
-
-  Example response:
-  ```json
-  {"message": "Deleted"}
-  ```
-
-Please note that `:name` in the routes should be replaced with the actual name of the item.
+Feel free to experiment and enhance the project based on your preferences and requirements.
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the MIT License.
