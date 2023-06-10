@@ -1,45 +1,82 @@
-# Node.js Markov Chain
+Express Shopping List
+This is a simple JSON API application built using Express.js to store a shopping list. The application uses an array to store shopping items, where each item is a JavaScript object with the keys name and price. Please note that the shopping list will be cleared each time the server restarts, as it is stored in memory.
 
-This is a Node.js project that generates random text using a Markov Chain algorithm.
+Installation
+Clone the repository to your local machine:
 
-## Installation
+bash
+Copy code
+git clone https://github.com/your-username/express-shopping-list.git
+Navigate to the project directory:
 
-1. Clone the repository to your local machine.
-2. Navigate to the project directory.
-3. Install the dependencies by running the following command:
+bash
+Copy code
+cd express-shopping-list
+Install the dependencies by running the following command:
 
+bash
+Copy code
+npm install
+Usage
+To start the Express server and run the application, use the following command:
 
+bash
+Copy code
+npm start
+The server will start on http://localhost:3000.
 
-## Usage
+Routes
+The application provides the following routes:
 
-To generate random text from a file or URL, use the following command:
+GET /items: Returns a list of shopping items.
 
+Example response:
 
-- `source` can be either `file` or `url`.
-- `input` should be the path to the file or the URL.
+json
+Copy code
+[
+  {"name": "popsicle", "price": 1.45},
+  {"name": "cheerios", "price": 3.40}
+]
+POST /items: Adds a new item to the shopping list.
 
-Examples:
+Example request body:
 
+json
+Copy code
+{"name": "popsicle", "price": 1.45}
+Example response:
 
-- `source` can be either `file` or `url`.
-- `input` should be the path to the file or the URL.
+json
+Copy code
+{"added": {"name": "popsicle", "price": 1.45}}
+GET /items/:name: Retrieves a single item's name and price.
 
-Examples:
+Example response:
 
+json
+Copy code
+{"name": "popsicle", "price": 1.45}
+PATCH /items/:name: Modifies a single item's name and/or price.
 
-The generated text will be printed to the console.
+Example request body:
 
-## Further Study
+json
+Copy code
+{"name": "new popsicle", "price": 2.45}
+Example response:
 
-The project can be extended in several ways to improve its functionality:
+json
+Copy code
+{"updated": {"name": "new popsicle", "price": 2.45}}
+DELETE /items/:name: Deletes a specific item from the shopping list.
 
-- Algorithmic improvements: Consider starting the generated text only with capitalized words or words that start a sentence. You can also modify the behavior to stop at a period while respecting the maximum number of words.
-- Markov chain enhancements: Currently, the Markov chain operates on single words. Consider implementing bigrams (two words at a time) for more realistic output text.
-- Node.js practices: Explore libraries that can strip HTML content from URLs and incorporate them into the project. Allow users to pass multiple files and/or URLs and mix the text together.
-- JavaScript generator functions: Research and implement generator functions to generate text on demand, word-by-word, instead of generating all the text at once.
+Example response:
 
-Feel free to experiment and enhance the project based on your preferences and requirements.
+json
+Copy code
+{"message": "Deleted"}
+Please note that :name in the routes should be replaced with the actual name of the item.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
+License
+This project is licensed under the MIT License.
